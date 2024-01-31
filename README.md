@@ -55,9 +55,3 @@ VITE_YT_API_KEY=[API_KEY]
 ```sh
 npm run dev
 ```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
