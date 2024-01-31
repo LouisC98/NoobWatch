@@ -14,6 +14,8 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 Noob Watch is a simple yet powerful web application that enables users to search for movies, get movie details, and watch trailers. It uses Vue.js as the frontend framework, Vue Router for navigation, and Axios for making HTTP requests to the TMDb API.
 
+Avalaible on : https://noob-watch.web.app/
+
 ## Technologies Used
 
 - Vue.js: v3.3.11
