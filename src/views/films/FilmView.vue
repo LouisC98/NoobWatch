@@ -175,7 +175,7 @@ const filmRuntime = computed(() => {
     <div class="my-3">
       <p class="mb-2 font-bold">Regarder en streaming sur :</p>
       <div
-        v-if="Object.keys(watchProviders).length > 0"
+        v-if="watchProviders && Object.keys(watchProviders).length > 0"
         class="flex flex-wrap justify-center gap-4"
       >
         <div v-for="watchProvider in watchProviders" :key="watchProvider.id" class="flex gap-2">
