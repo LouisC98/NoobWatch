@@ -1,6 +1,6 @@
 # Noob Watch
 
-Noob Watch is a Vue.js web application that allows users to discover and search for movie information. It utilizes The Movie Database (TMDb) API to fetch movie data and YouTube Data API to display trailers.
+Noob Watch is a Vue.js web application that allows users to discover and search for movie information. It utilizes The Movie Database ([TMDb](https://developer.themoviedb.org/docs/getting-started)) API to fetch movie data and [YouTube Data API](https://developers.google.com/youtube/v3?hl=fr) to display trailers.
 
 ## Recommended IDE Setup
 
@@ -12,7 +12,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Introduction
 
-Noob Watch is a simple yet powerful web application that enables users to search for movies, get movie details, and watch trailers. It uses Vue.js as the frontend framework, Vue Router for navigation, and Axios for making HTTP requests to the TMDb API.
+Noob Watch is a simple yet powerful web application that enables users to search for movies, get movie details, and watch trailers. It uses Vue.js as the frontend framework, Tailwind as the CSS framework, Vue Router for navigation, and Axios for making HTTP requests to the TMDb API.
 
 Avalaible on : https://noob-watch.web.app/
 
@@ -29,26 +29,25 @@ To install and run the application locally, follow these steps:
 1. Clone this repository:
 
 ```sh
-`git clone https://github.com/LouisC98/NoobWatch.git`
+git clone https://github.com/LouisC98/NoobWatch.git
 ```
 
 2. Navigate to the project directory:
 
 ```sh
-`cd NoobWatch`
+cd NoobWatch
 ```
 
 3. Install dependencies:
 
 ```sh
-`npm install`
+npm install
 ```
 
-4. Create a `.env` file at the root of the project and add the necessary API keys:
-```sh
-VITE_TMDB_API_KEY=[API_KEY]
-VITE_YT_API_KEY=[API_KEY]
-```
+4. Create a `.env` file at the root of the project and add the necessary API keys ([TMDB API](https://developer.themoviedb.org/docs/getting-started) and [YouTube Data API v3](https://developers.google.com/youtube/v3?hl=fr)):
+
+`VITE_TMDB_API_KEY=[API_KEY]`
+`VITE_YT_API_KEY=[API_KEY]`
 
 6. Run the application in development mode:
 
