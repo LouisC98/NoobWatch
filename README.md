@@ -43,9 +43,10 @@ To install and run the application locally, follow these steps:
 ```
 
 4. Create a `.env` file at the root of the project and add the necessary API keys:
-
+```sh
 VITE_TMDB_API_KEY=[API_KEY]
 VITE_YT_API_KEY=[API_KEY]
+```
 
 6. Run the application in development mode:
 
