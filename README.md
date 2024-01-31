@@ -46,8 +46,10 @@ npm install
 
 4. Create a `.env` file at the root of the project and add the necessary API keys ([TMDB API](https://developer.themoviedb.org/docs/getting-started) and [YouTube Data API v3](https://developers.google.com/youtube/v3?hl=fr)):
 
-`VITE_TMDB_API_KEY=[API_KEY]`
-`VITE_YT_API_KEY=[API_KEY]`
+```sh
+VITE_TMDB_API_KEY=[API_KEY]
+VITE_YT_API_KEY=[API_KEY]
+```
 
 6. Run the application in development mode:
 
