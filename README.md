@@ -1,6 +1,6 @@
-# NoobMovie
+# Noob Watch
 
-This template should help get you started developing with Vue 3 in Vite.
+Noob Watch is a Vue.js web application that allows users to discover and search for movie information. It utilizes The Movie Database (TMDb) API to fetch movie data and YouTube Data API to display trailers.
 
 ## Recommended IDE Setup
 
@@ -10,26 +10,51 @@ This template should help get you started developing with Vue 3 in Vite.
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+## Introduction
+
+Noob Watch is a simple yet powerful web application that enables users to search for movies, get movie details, and watch trailers. It uses Vue.js as the frontend framework, Vue Router for navigation, and Axios for making HTTP requests to the TMDb API.
+
+## Technologies Used
+
+- Vue.js: v3.3.11
+- Vue Router: v4.2.5
+- Axios: v1.6.7
+
+## Installation
+
+To install and run the application locally, follow these steps:
+
+1. Clone this repository:
 
 ```sh
-npm install
+`git clone https://github.com/LouisC98/NoobWatch.git`
+```
+
+2. Navigate to the project directory:
+
+```sh
+`cd NoobWatch`
+```
+
+3. Install dependencies:
+
+```sh
+`npm install`
+```
+
+4. Create a `.env` file at the root of the project and add the necessary API keys:
+
+VITE_TMDB_API_KEY=[API_KEY]
+VITE_YT_API_KEY=[API_KEY]
+
+6. Run the application in development mode:
+
+```sh
+npm run dev
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
