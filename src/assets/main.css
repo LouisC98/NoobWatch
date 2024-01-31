@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --black: #1f1f1f;
+  --grey: #696969;
+  --white: #f3f3f3;
+  --red: #d40000;
+  --green: #00c400;
+}
+
+@font-face {
+  font-family: 'Bebas';
+  src: url('./fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto-Regular.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto';
+  background-color: var(--black);
+  color: var(--white);
+}
