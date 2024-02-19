@@ -5,7 +5,7 @@ import { onMounted, ref, watchEffect } from 'vue'
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
 const imgURL = 'https://image.tmdb.org/t/p/w500'
 
-const fetchFilms = async () => {
+async function fetchFilms() {
   try {
     const url = 'https://api.themoviedb.org/3/trending/movie/week?language=fr-FR'
     const options = {
@@ -25,9 +25,7 @@ const fetchFilms = async () => {
 
 onMounted(fetchFilms)
 
-watchEffect(() => {
-  fetchFilms()
-})
+watchEffect(fetchFilms)
 const films = ref()
 </script>
 

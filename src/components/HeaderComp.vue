@@ -12,7 +12,7 @@ const active = computed(() => {
 
 <template>
   <header class="p-2">
-    <div class="flex justify-around p-1">
+    <div class="flex justify-around">
       <RouterLink :to="{ name: 'films_home', params: { page: 1 } }">
         <img src="/images/logo.webp" alt="logo noob movie" class="w-40 xs:w-48 sm:w-64" />
       </RouterLink>
@@ -42,6 +42,6 @@ const active = computed(() => {
         ><i class="fa-regular fa-star my-auto me-1"></i>Mieux notés</RouterLink
       >
     </nav>
-    <hr class="max-w-screen-sm mx-auto mt-3 shadow shadow-white" />
+    <hr class="max-w-screen-xl mx-auto mt-3 shadow shadow-white" />
   </header>
 </template>

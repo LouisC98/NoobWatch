@@ -1,21 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 const inputStatus = ref(false)
 const inputSearch = ref('')
+const searchInputRef = ref(null)
 
-const handleInput = async () => {
+async function handleInput() {
   if (inputSearch.value === '') {
     inputStatus.value = !inputStatus.value
+    nextTick(() => {
+      searchInputRef.value.focus()
+    })
   } else {
     router.push({ name: 'films_search', params: { page: 1, q: inputSearch.value } })
     inputStatus.value = false
+    inputSearch.value = ''
   }
 }
-const cancelInput = () => {
+function cancelInput() {
   inputSearch.value = ''
   inputStatus.value = false
 }
@@ -28,12 +33,13 @@ const cancelInput = () => {
         <div class="bg-black p-1 rounded-s">
           <i
             @click.self="cancelInput"
-            v-if="inputStatus === true"
+            v-if="inputStatus"
             class="fa-solid fa-xmark text-3xl me-1 cursor-pointer"
           ></i>
         </div>
         <input
-          v-if="inputStatus === true"
+          :class="inputStatus ? 'visible' : 'hidden'"
+          ref="searchInputRef"
           type="text"
           class="rounded p-1 bg-grey mb-1"
           placeholder="Recherche nom de film"

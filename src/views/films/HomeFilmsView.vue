@@ -7,7 +7,7 @@ const route = useRoute()
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
 const imgURL = 'https://image.tmdb.org/t/p/w500'
 
-const fetchFilms = async () => {
+async function fetchFilms() {
   try {
     const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr-EU&page=${route.params.page}&sort_by=popularity.desc&year=2024`
     const options = {
@@ -27,9 +27,7 @@ const fetchFilms = async () => {
 
 onMounted(fetchFilms)
 
-watchEffect(() => {
-  fetchFilms()
-})
+watchEffect(fetchFilms)
 
 const films = ref()
 
@@ -43,7 +41,7 @@ const previousPage = computed(() => {
   return page.value - 1
 })
 
-const scrollToTop = () => {
+function scrollToTop() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
@@ -79,7 +77,7 @@ const scrollToTop = () => {
       </h4>
       <div class="flex flex-wrap content-end p-1">
         <p class="text-grey text-sm sm:text-md">
-          <span class="font-bold">Note :</span> {{ film.vote_average }}
+          <span class="font-bold">Note :</span> {{ film.vote_average.toFixed(1) }}
         </p>
         <p class="text-grey text-sm sm:text-md">
           <span class="font-bold">Sortie :</span> {{ film.release_date }}

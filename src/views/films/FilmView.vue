@@ -12,7 +12,7 @@ const film = ref({})
 const videoId = ref({})
 const watchProviders = ref({})
 
-const fetchFilm = async () => {
+async function fetchFilm() {
   try {
     const url = `https://api.themoviedb.org/3/movie/${route.params.id}?language=fr-EU`
     const options = {
@@ -64,10 +64,11 @@ const fetchFilm = async () => {
     }
   } catch (error) {
     console.log(error)
+    film.value = null
   }
 }
 
-const pushToWiflix = async (filmTitle) => {
+async function pushToWiflix(filmTitle) {
   // Texte à copier
   const textToCopy = filmTitle
   const url = 'https://wiflix.voto/index.php?do=search'
@@ -94,7 +95,7 @@ const pushToWiflix = async (filmTitle) => {
   }
 }
 
-const pushToYT = async (filmTitle) => {
+async function pushToYT(filmTitle) {
   if (videoId.value == null) {
     const url =
       'https://www.youtube.com/results?search_query=' +
@@ -147,6 +148,10 @@ const filmRuntime = computed(() => {
         <span class="me-2" v-for="genre in film.genres" :key="genre.id">{{ genre.name }}</span>
       </div>
       <div class="mt-2">
+        <span class="font-bold me-2">Note : </span>
+        <span>{{ Number(film.vote_average).toFixed(1) }}</span>
+      </div>
+      <div class="mt-2">
         <span class="font-bold me-2">Date de sortie : </span>
         <span>{{ film.release_date }}</span>
       </div>
@@ -158,11 +163,11 @@ const filmRuntime = computed(() => {
     <div>
       <iframe
         :width="frameWidth"
-        :height="(frameWidth * 9) / 16"
+        :height="frameWidth * 9 / 16"
         :src="'https://www.youtube.com/embed/' + videoId"
         title="YouTube video player"
         frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
         class="mx-auto mt-2"
       ></iframe>
