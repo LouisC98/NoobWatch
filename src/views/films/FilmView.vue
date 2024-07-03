@@ -71,7 +71,7 @@ async function fetchFilm() {
 async function pushToWiflix(filmTitle) {
   // Texte à copier
   const textToCopy = filmTitle
-  const url = 'https://wiflix.voto/index.php?do=search'
+  const url = 'https://wiflix.bio/index.php?do=search'
 
   try {
     // Copier le texte dans le presse-papiers
@@ -163,7 +163,7 @@ const filmRuntime = computed(() => {
     <div>
       <iframe
         :width="frameWidth"
-        :height="frameWidth * 9 / 16"
+        :height="(frameWidth * 9) / 16"
         :src="'https://www.youtube.com/embed/' + videoId"
         title="YouTube video player"
         frameborder="0"
