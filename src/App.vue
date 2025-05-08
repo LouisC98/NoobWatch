@@ -3,6 +3,7 @@ import { RouterView } from 'vue-router'
 import HeaderComp from './components/HeaderComp.vue'
 import axios from 'axios'
 import { ref, provide } from 'vue'
+import InstallButton from '@/components/InstallButton.vue'
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
 const contentMode = ref('films')
@@ -25,4 +26,5 @@ axios.get(url, options).catch((err) => console.error('error:' + err))
   <div class="max-w-screen-sm mx-auto p-2">
     <RouterView />
   </div>
+  <InstallButton />
 </template>
