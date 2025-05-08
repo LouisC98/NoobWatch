@@ -50,11 +50,10 @@ function setContentMode(mode) {
     <div class="flex items-center justify-between">
       <!-- Left section: Logo and mobile menu toggle -->
       <div class="flex items-center">
-        <button
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
-          class="mr-3 text-white md:hidden"
-        >
-          <i :class="isMobileMenuOpen ? 'fa-solid fa-xmark text-xl' : 'fa-solid fa-bars text-xl'"></i>
+        <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="mr-3 text-white md:hidden">
+          <i
+            :class="isMobileMenuOpen ? 'fa-solid fa-xmark text-xl' : 'fa-solid fa-bars text-xl'"
+          ></i>
         </button>
 
         <RouterLink :to="{ name: 'films_home', params: { page: 1 } }" class="flex items-center">
@@ -103,7 +102,9 @@ function setContentMode(mode) {
           <RouterLink
             :to="{ name: 'films_top_rated', params: { page: 1 } }"
             class="flex items-center font-medium text-sm transition-colors"
-            :class="active === 'films_top_rated' ? 'text-white' : 'text-white/60 hover:text-white/80'"
+            :class="
+              active === 'films_top_rated' ? 'text-white' : 'text-white/60 hover:text-white/80'
+            "
           >
             <i class="fa-regular fa-star text-xs mr-1.5"></i> Mieux notés
           </RouterLink>
@@ -144,10 +145,7 @@ function setContentMode(mode) {
     </div>
 
     <!-- Mobile menu - shown only on mobile when menu is open -->
-    <div
-      v-if="isMobileMenuOpen"
-      class="md:hidden mt-4 bg-black/95 rounded-lg p-3 animate-fadeIn"
-    >
+    <div v-if="isMobileMenuOpen" class="md:hidden mt-4 bg-black/95 rounded-lg p-3 animate-fadeIn">
       <!-- Mobile mode selector -->
       <div class="flex justify-center space-x-8 py-3 border-b border-gray-800">
         <button
@@ -240,7 +238,13 @@ function setContentMode(mode) {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

@@ -55,13 +55,11 @@ function scrollToTop() {
   <h3 class="font-title text-3xl mb-3 text-center">
     Recherche : <span class="font-roboto text-lg ms-2">{{ route.params.q }}</span>
   </h3>
-  <div v-if="films && films.length > 0" class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-    <FilmCard
-      v-for="film in films"
-      :key="film.id"
-      :item="film"
-      itemType="film"
-    />
+  <div
+    v-if="films && films.length > 0"
+    class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4"
+  >
+    <FilmCard v-for="film in films" :key="film.id" :item="film" itemType="film" />
   </div>
   <div v-else>
     <p class="text-center mt-6">Aucun résultat</p>

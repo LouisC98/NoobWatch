@@ -7,7 +7,6 @@ import FilmCard from '@/components/CardComp.vue'
 const route = useRoute()
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
 
-
 async function fetchTVShows() {
   try {
     const url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&language=fr-EU&page=${route.params.page}&sort_by=popularity.desc&first_air_date_year=2024`
@@ -60,12 +59,7 @@ function scrollToTop() {
   </h2>
   <h3 class="text-lg mb-1">Séries 2024 à découvrir :</h3>
   <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-    <FilmCard
-      v-for="show in tvShows"
-      :key="show.id"
-      :item="show"
-      itemType="tv"
-    />
+    <FilmCard v-for="show in tvShows" :key="show.id" :item="show" itemType="tv" />
   </div>
   <div class="grid grid-cols-3 my-3">
     <RouterLink
@@ -73,14 +67,14 @@ function scrollToTop() {
       v-if="route.params.page > 1"
       class="bg-red p-2 rounded text-center text-sm"
       @click="scrollToTop()"
-    ><i class="fa-solid fa-arrow-left me-2"></i> Page précédente</RouterLink
+      ><i class="fa-solid fa-arrow-left me-2"></i> Page précédente</RouterLink
     >
     <p class="my-auto text-center">Page {{ page }}</p>
     <RouterLink
       :to="{ name: 'tv_home', params: { page: nextPage } }"
       class="bg-red p-2 rounded text-center text-sm"
       @click="scrollToTop()"
-    >Page suivante <i class="fa-solid fa-arrow-right ms-2"></i
+      >Page suivante <i class="fa-solid fa-arrow-right ms-2"></i
     ></RouterLink>
   </div>
 </template>

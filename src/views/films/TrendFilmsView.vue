@@ -32,11 +32,6 @@ const films = ref()
 <template>
   <h3 class="font-title text-3xl mb-3 text-center">Films tendances cette semaine</h3>
   <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-    <FilmCard
-      v-for="film in films"
-      :key="film.id"
-      :item="film"
-      itemType="film"
-    />
+    <FilmCard v-for="film in films" :key="film.id" :item="film" itemType="film" />
   </div>
 </template>

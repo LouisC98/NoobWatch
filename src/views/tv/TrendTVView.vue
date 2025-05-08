@@ -32,11 +32,6 @@ const tvShows = ref()
 <template>
   <h3 class="font-title text-3xl mb-3 text-center">Séries tendances cette semaine</h3>
   <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-    <FilmCard
-      v-for="show in tvShows"
-      :key="show.id"
-      :item="show"
-      itemType="tv"
-    />
+    <FilmCard v-for="show in tvShows" :key="show.id" :item="show" itemType="tv" />
   </div>
 </template>

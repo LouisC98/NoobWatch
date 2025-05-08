@@ -4,7 +4,6 @@ import { computed, onMounted, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import FilmCard from '@/components/CardComp.vue'
 
-
 const route = useRoute()
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
 
@@ -53,12 +52,7 @@ function scrollToTop() {
 <template>
   <h3 class="font-title text-3xl text-center mb-3">Séries les mieux notées</h3>
   <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-    <FilmCard
-      v-for="show in tvShows"
-      :key="show.id"
-      :item="show"
-      itemType="tv"
-    />
+    <FilmCard v-for="show in tvShows" :key="show.id" :item="show" itemType="tv" />
   </div>
   <div class="grid grid-cols-3 my-3">
     <RouterLink
@@ -66,14 +60,14 @@ function scrollToTop() {
       v-if="route.params.page > 1"
       class="bg-red p-2 rounded text-center text-sm"
       @click="scrollToTop()"
-    ><i class="fa-solid fa-arrow-left me-2"></i> Page précédente</RouterLink
+      ><i class="fa-solid fa-arrow-left me-2"></i> Page précédente</RouterLink
     >
     <p class="my-auto text-center">Page {{ page }}</p>
     <RouterLink
       :to="{ name: 'tv_top_rated', params: { page: nextPage } }"
       class="bg-red p-2 rounded text-center text-sm"
       @click="scrollToTop()"
-    >Page suivante <i class="fa-solid fa-arrow-right ms-2"></i
+      >Page suivante <i class="fa-solid fa-arrow-right ms-2"></i
     ></RouterLink>
   </div>
 </template>

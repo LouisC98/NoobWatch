@@ -51,10 +51,14 @@ const imgURL = 'https://image.tmdb.org/t/p/w500'
     </div>
 
     <!-- Hover overlay with play icon (Netflix style) -->
-    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div
+      class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
       <div class="w-12 h-12 rounded-full bg-red/80 flex items-center justify-center">
         <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M4.5 3.5A.5.5 0 0 0 4 4v8a.5.5 0 0 0 .8.4l6-4a.5.5 0 0 0 0-.8l-6-4a.5.5 0 0 0-.3-.1z"/>
+          <path
+            d="M4.5 3.5A.5.5 0 0 0 4 4v8a.5.5 0 0 0 .8.4l6-4a.5.5 0 0 0 0-.8l-6-4a.5.5 0 0 0-.3-.1z"
+          />
         </svg>
       </div>
     </div>

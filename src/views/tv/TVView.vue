@@ -86,9 +86,9 @@ async function pushToWiflix(tvShowTitle) {
 
     const confirmation = window.confirm(
       'Le titre du film à été copié : ' +
-      textToCopy +
-      '\n' +
-      'Vous allez être redirigé vers la recherche Wiflix, voulez-vous continuer ?'
+        textToCopy +
+        '\n' +
+        'Vous allez être redirigé vers la recherche Wiflix, voulez-vous continuer ?'
     )
     if (confirmation) {
       console.log('Accepté')
@@ -145,7 +145,9 @@ const frameWidth = computed(() => {
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
 
         <!-- Content overlaid on backdrop -->
-        <div class="absolute bottom-0 left-0 w-full p-4 md:p-6 flex flex-col md:flex-row items-start md:items-end">
+        <div
+          class="absolute bottom-0 left-0 w-full p-4 md:p-6 flex flex-col md:flex-row items-start md:items-end"
+        >
           <!-- Poster (hidden on mobile, shown on larger screens) -->
           <img
             :src="imgURL + tvShow.poster_path"
@@ -159,13 +161,19 @@ const frameWidth = computed(() => {
 
             <!-- Show specs row -->
             <div class="flex flex-wrap items-center gap-3 mb-3 text-sm text-white/90">
-              <span class="bg-red px-2 py-0.5 rounded-sm">{{ Number(tvShow.vote_average).toFixed(1) }}</span>
+              <span class="bg-red px-2 py-0.5 rounded-sm">{{
+                Number(tvShow.vote_average).toFixed(1)
+              }}</span>
               <span>{{ tvShow.first_air_date?.substring(0, 4) }}</span>
-              <span>{{ tvShow.number_of_seasons }} saison{{ tvShow.number_of_seasons > 1 ? 's' : '' }}</span>
+              <span
+                >{{ tvShow.number_of_seasons }} saison{{
+                  tvShow.number_of_seasons > 1 ? 's' : ''
+                }}</span
+              >
             </div>
 
             <!-- Watch buttons -->
-            <div class="flex gap-2 mt-4" >
+            <div class="flex gap-2 mt-4">
               <button
                 @click="pushToYT(tvShow.name)"
                 class="flex items-center bg-white text-black py-2 px-4 rounded-md hover:bg-white/90 transition"
@@ -256,7 +264,9 @@ const frameWidth = computed(() => {
             <div class="p-3 flex-1">
               <h3 class="font-bold text-lg">{{ season.name }}</h3>
               <div class="flex justify-between mt-1 text-sm text-white/70">
-                <span>{{ season.episode_count }} épisode{{ season.episode_count > 1 ? 's' : '' }}</span>
+                <span
+                  >{{ season.episode_count }} épisode{{ season.episode_count > 1 ? 's' : '' }}</span
+                >
                 <span>{{ season.air_date?.substring(0, 4) || 'À venir' }}</span>
               </div>
               <p v-if="season.overview" class="mt-2 text-sm text-white/60 line-clamp-2">
@@ -282,19 +292,21 @@ const frameWidth = computed(() => {
               v-for="provider in watchProviders"
               :key="provider.id"
               class="provider-card group flex flex-col items-center"
-              style="width: 85px;"
+              style="width: 85px"
             >
-            <div class="relative overflow-hidden rounded-md bg-black/40">
-              <!-- Logo -->
-              <img
-                :src="imgURL + provider.logo_path"
-                :alt="provider.provider_name"
-                class="w-16 h-16 object-cover"
-              />
-            </div>
+              <div class="relative overflow-hidden rounded-md bg-black/40">
+                <!-- Logo -->
+                <img
+                  :src="imgURL + provider.logo_path"
+                  :alt="provider.provider_name"
+                  class="w-16 h-16 object-cover"
+                />
+              </div>
 
               <!-- Provider name avec ellipsis pour les noms longs -->
-              <p class="text-center text-xs mt-1.5 text-white/80 group-hover:text-white transition-colors w-full truncate px-1">
+              <p
+                class="text-center text-xs mt-1.5 text-white/80 group-hover:text-white transition-colors w-full truncate px-1"
+              >
                 {{ provider.provider_name }}
               </p>
             </div>
@@ -322,7 +334,9 @@ const frameWidth = computed(() => {
               class="wiflix-button flex items-center gap-2 bg-gradient-to-r from-black/60 to-red/20 hover:from-red/20 hover:to-black/60 border border-red/40 py-2.5 px-5 rounded-md transition-all duration-300 group"
             >
               <i class="fa-solid fa-search text-red group-hover:text-white transition-colors"></i>
-              <span class="font-title text-red text-xl group-hover:text-white transition-colors">Wiflix</span>
+              <span class="font-title text-red text-xl group-hover:text-white transition-colors"
+                >Wiflix</span
+              >
             </button>
           </div>
         </div>

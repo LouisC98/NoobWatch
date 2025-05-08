@@ -56,19 +56,19 @@ function scrollToTop() {
 
     <!-- Films grid with Netflix-like spacing -->
     <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-      <FilmCard
-        v-for="film in films"
-        :key="film.id"
-        :item="film"
-        itemType="film"
-      />
+      <FilmCard v-for="film in films" :key="film.id" :item="film" itemType="film" />
     </div>
 
     <!-- Pagination in Netflix style -->
     <div class="flex justify-between mt-8 mb-3">
       <button
         v-if="route.params.page > 1"
-        @click="() => { $router.push({ name: 'films_popular', params: { page: previousPage } }); scrollToTop(); }"
+        @click="
+          () => {
+            $router.push({ name: 'films_popular', params: { page: previousPage } })
+            scrollToTop()
+          }
+        "
         class="bg-transparent border border-gray-600 text-white hover:bg-red hover:border-red transition-colors duration-300 py-2 px-4 rounded-md flex items-center"
       >
         <i class="fa-solid fa-arrow-left me-2"></i> Page précédente
@@ -78,7 +78,12 @@ function scrollToTop() {
       <p class="my-auto text-center text-white/70">Page {{ page }}</p>
 
       <button
-        @click="() => { $router.push({ name: 'films_popular', params: { page: nextPage } }); scrollToTop(); }"
+        @click="
+          () => {
+            $router.push({ name: 'films_popular', params: { page: nextPage } })
+            scrollToTop()
+          }
+        "
         class="bg-transparent border border-gray-600 text-white hover:bg-red hover:border-red transition-colors duration-300 py-2 px-4 rounded-md flex items-center"
       >
         Page suivante <i class="fa-solid fa-arrow-right ms-2"></i>

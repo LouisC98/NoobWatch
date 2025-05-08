@@ -59,12 +59,7 @@ function scrollToTop() {
   </h2>
   <h3 class="text-lg mb-1">Films 2023 à découvrir :</h3>
   <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-    <FilmCard
-      v-for="film in films"
-      :key="film.id"
-      :item="film"
-      itemType="film"
-    />
+    <FilmCard v-for="film in films" :key="film.id" :item="film" itemType="film" />
   </div>
   <div class="grid grid-cols-3 my-3">
     <RouterLink

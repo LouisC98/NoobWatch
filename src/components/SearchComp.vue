@@ -63,10 +63,13 @@ function handleKeyDown(event) {
 }
 
 // Watch for route changes to close the search
-watch(() => router.currentRoute.value, () => {
-  isSearchOpen.value = false
-  inputSearch.value = ''
-})
+watch(
+  () => router.currentRoute.value,
+  () => {
+    isSearchOpen.value = false
+    inputSearch.value = ''
+  }
+)
 
 // Add event listeners
 onMounted(() => {
@@ -88,7 +91,10 @@ onUnmounted(() => {
       class="flex items-center justify-center text-white/80 hover:text-white transition-colors p-1"
       :class="isSearchOpen ? 'text-white' : ''"
     >
-      <i class="fa-solid" :class="isSearchOpen ? 'fa-xmark text-xl' : 'fa-magnifying-glass text-xl'"></i>
+      <i
+        class="fa-solid"
+        :class="isSearchOpen ? 'fa-xmark text-xl' : 'fa-magnifying-glass text-xl'"
+      ></i>
     </button>
 
     <!-- Search input field - animated -->

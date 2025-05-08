@@ -55,13 +55,11 @@ function scrollToTop() {
   <h3 class="font-title text-3xl mb-3 text-center">
     Recherche : <span class="font-roboto text-lg ms-2">{{ route.params.q }}</span>
   </h3>
-  <div v-if="tvShows && tvShows.length > 0" class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-    <FilmCard
-      v-for="show in tvShows"
-      :key="show.id"
-      :item="show"
-      itemType="tv"
-    />
+  <div
+    v-if="tvShows && tvShows.length > 0"
+    class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4"
+  >
+    <FilmCard v-for="show in tvShows" :key="show.id" :item="show" itemType="tv" />
   </div>
   <div v-else>
     <p class="text-center mt-6">Aucun résultat</p>
@@ -72,14 +70,14 @@ function scrollToTop() {
       v-if="route.params.page > 1"
       class="bg-red p-2 rounded text-center text-sm"
       @click="scrollToTop()"
-    ><i class="fa-solid fa-arrow-left me-2"></i> Page précédente</RouterLink
+      ><i class="fa-solid fa-arrow-left me-2"></i> Page précédente</RouterLink
     >
     <p class="my-auto text-center">Page {{ page }}</p>
     <RouterLink
       :to="{ name: 'tv_search', params: { page: nextPage, q: route.params.q } }"
       class="bg-red p-2 rounded text-center text-sm"
       @click="scrollToTop()"
-    >Page suivante <i class="fa-solid fa-arrow-right ms-2"></i
+      >Page suivante <i class="fa-solid fa-arrow-right ms-2"></i
     ></RouterLink>
   </div>
 </template>
