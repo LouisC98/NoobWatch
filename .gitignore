@@ -34,5 +34,3 @@ deploy.sh
 *.sw?
 
 *.tsbuildinfo
-
-/public/ads.txt
