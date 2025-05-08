@@ -1,11 +1,11 @@
 <script setup>
 import axios from 'axios'
 import { computed, onMounted, ref, watchEffect } from 'vue'
+import FilmCard from '@/components/CardComp.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
-const imgURL = 'https://image.tmdb.org/t/p/w500'
 
 async function fetchFilms() {
   try {
@@ -51,32 +51,13 @@ function scrollToTop() {
 
 <template>
   <h3 class="font-title text-3xl text-center mb-3">Films les mieux notés</h3>
-  <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-2">
-    <RouterLink
-      :to="{ name: 'film', params: { id: film.id } }"
+  <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
+    <FilmCard
       v-for="film in films"
       :key="film.id"
-      class="shadow-grey border border-grey rounded shadow mx-auto w-36 flex flex-wrap justify-between"
-    >
-      <div>
-        <img
-          :src="imgURL + film.poster_path"
-          :alt="'poster du film ' + film.title"
-          class="rounded-t w-36 mx-auto"
-        />
-      </div>
-      <h4 class="font-bold text-center m-auto p-1">
-        {{ film.title }}
-      </h4>
-      <div class="flex flex-wrap content-end p-1">
-        <p class="text-grey text-sm sm:text-md">
-          <span class="font-bold">Note :</span> {{ film.vote_average.toFixed(1) }}
-        </p>
-        <p class="text-grey text-sm sm:text-md">
-          <span class="font-bold">Sortie :</span> {{ film.release_date }}
-        </p>
-      </div>
-    </RouterLink>
+      :item="film"
+      itemType="film"
+    />
   </div>
   <div class="grid grid-cols-3 my-3">
     <RouterLink

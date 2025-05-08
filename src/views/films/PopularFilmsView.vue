@@ -2,10 +2,10 @@
 import axios from 'axios'
 import { computed, onMounted, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
+import FilmCard from '@/components/CardComp.vue'
 
 const route = useRoute()
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
-const imgURL = 'https://image.tmdb.org/t/p/w500'
 
 async function fetchFilms() {
   try {
@@ -50,48 +50,39 @@ function scrollToTop() {
 </script>
 
 <template>
-  <h3 class="font-title text-3xl mb-3 text-center">Films populaires</h3>
-  <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-2">
-    <RouterLink
-      :to="{ name: 'film', params: { id: film.id } }"
-      v-for="film in films"
-      :key="film.id"
-      class="shadow-grey border border-grey rounded shadow mx-auto w-36 flex flex-wrap justify-between"
-    >
-      <div>
-        <img
-          :src="imgURL + film.poster_path"
-          :alt="'poster du film ' + film.title"
-          class="rounded-t w-36 mx-auto"
-        />
-      </div>
-      <h4 class="font-bold text-center m-auto p-1">
-        {{ film.title }}
-      </h4>
-      <div class="flex flex-wrap content-end p-1">
-        <p class="text-grey text-sm sm:text-md">
-          <span class="font-bold">Note :</span> {{ film.vote_average.toFixed(1) }}
-        </p>
-        <p class="text-grey text-sm sm:text-md">
-          <span class="font-bold">Sortie :</span> {{ film.release_date }}
-        </p>
-      </div>
-    </RouterLink>
-  </div>
-  <div class="grid grid-cols-3 my-3">
-    <RouterLink
-      :to="{ name: 'films_popular', params: { page: previousPage } }"
-      v-if="route.params.page > 1"
-      class="bg-red p-2 rounded text-center text-sm"
-      @click="scrollToTop()"
-      ><i class="fa-solid fa-arrow-left me-2"></i> Page précédente</RouterLink
-    >
-    <p class="my-auto text-center">Page {{ page }}</p>
-    <RouterLink
-      :to="{ name: 'films_popular', params: { page: nextPage } }"
-      class="bg-red p-2 rounded text-center text-sm"
-      @click="scrollToTop()"
-      >Page suivante <i class="fa-solid fa-arrow-right ms-2"></i
-    ></RouterLink>
+  <div>
+    <!-- Section title in Netflix style -->
+    <h3 class="font-title text-2xl mb-5 text-white">Films populaires</h3>
+
+    <!-- Films grid with Netflix-like spacing -->
+    <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
+      <FilmCard
+        v-for="film in films"
+        :key="film.id"
+        :item="film"
+        itemType="film"
+      />
+    </div>
+
+    <!-- Pagination in Netflix style -->
+    <div class="flex justify-between mt-8 mb-3">
+      <button
+        v-if="route.params.page > 1"
+        @click="() => { $router.push({ name: 'films_popular', params: { page: previousPage } }); scrollToTop(); }"
+        class="bg-transparent border border-gray-600 text-white hover:bg-red hover:border-red transition-colors duration-300 py-2 px-4 rounded-md flex items-center"
+      >
+        <i class="fa-solid fa-arrow-left me-2"></i> Page précédente
+      </button>
+      <div v-else class="w-[120px]"></div>
+
+      <p class="my-auto text-center text-white/70">Page {{ page }}</p>
+
+      <button
+        @click="() => { $router.push({ name: 'films_popular', params: { page: nextPage } }); scrollToTop(); }"
+        class="bg-transparent border border-gray-600 text-white hover:bg-red hover:border-red transition-colors duration-300 py-2 px-4 rounded-md flex items-center"
+      >
+        Page suivante <i class="fa-solid fa-arrow-right ms-2"></i>
+      </button>
+    </div>
   </div>
 </template>
