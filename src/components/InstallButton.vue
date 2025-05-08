@@ -1,47 +1,47 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
-const showInstallButton = ref(false);
-const deferredPrompt = ref(null);
+const showInstallButton = ref(false)
+const deferredPrompt = ref(null)
 
 onMounted(() => {
   // Écouter l'événement beforeinstallprompt
   window.addEventListener('beforeinstallprompt', (e) => {
     // Empêcher Chrome d'afficher automatiquement le prompt
-    e.preventDefault();
+    e.preventDefault()
 
     // Sauvegarder l'événement pour l'utiliser plus tard
-    deferredPrompt.value = e;
+    deferredPrompt.value = e
 
     // Afficher le bouton d'installation
-    showInstallButton.value = true;
-  });
+    showInstallButton.value = true
+  })
 
   // Masquer le bouton si l'app est déjà installée
   window.addEventListener('appinstalled', () => {
-    showInstallButton.value = false;
-    deferredPrompt.value = null;
-  });
-});
+    showInstallButton.value = false
+    deferredPrompt.value = null
+  })
+})
 
 function installApp() {
   if (!deferredPrompt.value) {
-    return;
+    return
   }
 
   // Afficher le prompt d'installation
-  deferredPrompt.value.prompt();
+  deferredPrompt.value.prompt()
 
   // Attendre que l'utilisateur réponde
   deferredPrompt.value.userChoice.then((choiceResult) => {
     if (choiceResult.outcome === 'accepted') {
-      console.log('Utilisateur a accepté l\'installation');
+      console.log("Utilisateur a accepté l'installation")
     } else {
-      console.log('Utilisateur a refusé l\'installation');
+      console.log("Utilisateur a refusé l'installation")
     }
     // Réinitialiser
-    deferredPrompt.value = null;
-  });
+    deferredPrompt.value = null
+  })
 }
 </script>
 
