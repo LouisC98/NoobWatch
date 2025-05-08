@@ -19,34 +19,52 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/films/discover/1'
+      redirect: '/films/discover/1',
+      meta: {
+        title: 'Films à découvrir - Noob Watch'
+      }
     },
 
     // Routes Films
     {
       path: '/films/search/:q/:page',
       name: 'films_search',
-      component: SearchResults
+      component: SearchResults,
+      meta: {
+        title: 'Recherche de films - Noob Watch'
+      }
     },
     {
       path: '/films/popular/:page',
       name: 'films_popular',
-      component: PopularFilmsView
+      component: PopularFilmsView,
+      meta: {
+        title: 'Films populaires - Noob Watch'
+      }
     },
     {
       path: '/films/trend',
       name: 'films_trend',
-      component: TrendFilmsView
+      component: TrendFilmsView,
+      meta: {
+        title: 'Films en tendance - Noob Watch'
+      }
     },
     {
       path: '/films/top_rated/:page',
       name: 'films_top_rated',
-      component: RatedFilmsView
+      component: RatedFilmsView,
+      meta: {
+        title: 'Films les mieux notés - Noob Watch'
+      }
     },
     {
       path: '/films/discover/:page',
       name: 'films_home',
-      component: HomeFilmsView
+      component: HomeFilmsView,
+      meta: {
+        title: 'Films à découvrir - Noob Watch'
+      }
     },
     {
       path: '/film/:id',
@@ -58,34 +76,60 @@ const router = createRouter({
     {
       path: '/tv/search/:q/:page',
       name: 'tv_search',
-      component: SearchTVResults
+      component: SearchTVResults,
+      meta: {
+        title: 'Recherche de séries - Noob Watch'
+      }
     },
     {
       path: '/tv/popular/:page',
       name: 'tv_popular',
-      component: PopularTVView
+      component: PopularTVView,
+      meta: {
+        title: 'Séries populaires - Noob Watch'
+      }
     },
     {
       path: '/tv/trend',
       name: 'tv_trend',
-      component: TrendTVView
+      component: TrendTVView,
+      meta: {
+        title: 'Séries en tendance - Noob Watch'
+      }
     },
     {
       path: '/tv/top_rated/:page',
       name: 'tv_top_rated',
-      component: RatedTVView
+      component: RatedTVView,
+      meta: {
+        title: 'Séries les mieux notées - Noob Watch'
+      }
     },
     {
       path: '/tv/discover/:page',
       name: 'tv_home',
-      component: HomeTVView
+      component: HomeTVView,
+      meta: {
+        title: 'Séries à découvrir - Noob Watch'
+      }
     },
     {
       path: '/tv/:id',
       name: 'tv',
-      component: TVView
+      component: TVView,
+      meta: {
+        title: 'Détails de la série - Noob Watch'
+      }
     }
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.meta && to.meta.title) {
+    document.title = to.meta.title
+  } else {
+    document.title = 'Noob Watch - Films et Séries'
+  }
+  next()
+})
 export default router

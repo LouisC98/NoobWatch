@@ -25,6 +25,7 @@ const imgURL = 'https://image.tmdb.org/t/p/w500'
         :src="imgURL + item.poster_path"
         :alt="`poster de ${itemType === 'film' ? 'film' : 'série'} ${itemType === 'film' ? item.title : item.name}`"
         class="w-full h-full object-cover"
+        loading="lazy"
       />
 
       <!-- Netflix-style gradient overlay -->

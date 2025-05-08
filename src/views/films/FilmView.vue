@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -13,6 +13,27 @@ const film = ref({})
 const videoId = ref({})
 const watchProviders = ref({})
 const loading = ref(true)
+
+// Titre dynamique avec computed qui se met à jour automatiquement
+const pageTitle = computed(() => {
+  if (film.value?.title) {
+    const year = film.value.release_date?.substring(0, 4) || ''
+    return `${film.value.title} (${year}) - Noob Watch`
+  }
+  return 'Détails du film - Noob Watch'
+})
+
+// Observer qui met à jour le titre dès que pageTitle change
+watch(
+  pageTitle,
+  (newTitle) => {
+    document.title = newTitle
+  },
+  { immediate: true }
+)
+
+// Recharger les données si l'ID change
+watch(() => route.params.id, fetchFilm, { immediate: true })
 
 async function fetchFilm() {
   try {
@@ -148,6 +169,7 @@ const filmRuntime = computed(() => {
           :src="backdropURL + film.backdrop_path"
           :alt="film.title + ' backdrop'"
           class="w-full h-full object-cover object-center"
+          loading="lazy"
         />
         <!-- Gradient overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
@@ -274,6 +296,7 @@ const filmRuntime = computed(() => {
                   :src="imgURL + provider.logo_path"
                   :alt="provider.provider_name"
                   class="w-16 h-16 object-cover"
+                  loading="lazy"
                 />
               </div>
 

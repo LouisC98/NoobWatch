@@ -56,7 +56,10 @@ function setContentMode(mode) {
           ></i>
         </button>
 
-        <RouterLink :to="{ name: 'films_home', params: { page: 1 } }" class="flex items-center">
+        <RouterLink
+          :to="{ name: contentMode === 'tv' ? 'tv_home' : 'films_home', params: { page: 1 } }"
+          class="flex items-center"
+        >
           <img src="/images/logo.webp" alt="logo noob movie" class="w-36 sm:w-44" />
         </RouterLink>
       </div>
@@ -66,15 +69,17 @@ function setContentMode(mode) {
         <!-- Mode selector -->
         <div class="flex items-center space-x-5">
           <button
-            class="font-medium text-sm transition-colors"
-            :class="contentMode === 'films' ? 'text-white' : 'text-white/60 hover:text-white/80'"
+            class="font-semibold text-xl transition-colors"
+            :class="
+              contentMode === 'films' ? 'text-red font-bold' : 'text-white/60 hover:text-red/80'
+            "
             @click="setContentMode('films')"
           >
             Films
           </button>
           <button
-            class="font-medium text-sm transition-colors"
-            :class="contentMode === 'tv' ? 'text-white' : 'text-white/60 hover:text-white/80'"
+            class="font-semibold text-xl transition-colors"
+            :class="contentMode === 'tv' ? 'text-red font-bold' : 'text-white/60 hover:text-red/80'"
             @click="setContentMode('tv')"
           >
             Séries
@@ -85,28 +90,28 @@ function setContentMode(mode) {
         <div v-if="contentMode === 'films'" class="flex space-x-5">
           <RouterLink
             :to="{ name: 'films_popular', params: { page: 1 } }"
-            class="flex items-center font-medium text-sm transition-colors"
+            class="flex items-center font-medium text-xl transition-colors"
             :class="active === 'films_popular' ? 'text-white' : 'text-white/60 hover:text-white/80'"
           >
-            <i class="fa-solid fa-fire text-xs mr-1.5"></i> Populaires
+            <i class="fa-solid fa-fire text-xl mr-1.5"></i> Populaires
           </RouterLink>
 
           <RouterLink
             :to="{ name: 'films_trend' }"
-            class="flex items-center font-medium text-sm transition-colors"
+            class="flex items-center font-medium text-xl transition-colors"
             :class="active === 'films_trend' ? 'text-white' : 'text-white/60 hover:text-white/80'"
           >
-            <i class="fa-solid fa-arrow-trend-up text-xs mr-1.5"></i> Tendances
+            <i class="fa-solid fa-arrow-trend-up text-xl mr-1.5"></i> Tendances
           </RouterLink>
 
           <RouterLink
             :to="{ name: 'films_top_rated', params: { page: 1 } }"
-            class="flex items-center font-medium text-sm transition-colors"
+            class="flex items-center font-medium text-xl transition-colors"
             :class="
               active === 'films_top_rated' ? 'text-white' : 'text-white/60 hover:text-white/80'
             "
           >
-            <i class="fa-regular fa-star text-xs mr-1.5"></i> Mieux notés
+            <i class="fa-regular fa-star text-xl mr-1.5"></i> Mieux notés
           </RouterLink>
         </div>
 
@@ -114,26 +119,26 @@ function setContentMode(mode) {
         <div v-else class="flex space-x-5">
           <RouterLink
             :to="{ name: 'tv_popular', params: { page: 1 } }"
-            class="flex items-center font-medium text-sm transition-colors"
+            class="flex items-center font-medium text-xl transition-colors"
             :class="active === 'tv_popular' ? 'text-white' : 'text-white/60 hover:text-white/80'"
           >
-            <i class="fa-solid fa-fire text-xs mr-1.5"></i> Populaires
+            <i class="fa-solid fa-fire text-xl mr-1.5"></i> Populaires
           </RouterLink>
 
           <RouterLink
             :to="{ name: 'tv_trend' }"
-            class="flex items-center font-medium text-sm transition-colors"
+            class="flex items-center font-medium text-xl transition-colors"
             :class="active === 'tv_trend' ? 'text-white' : 'text-white/60 hover:text-white/80'"
           >
-            <i class="fa-solid fa-arrow-trend-up text-xs mr-1.5"></i> Tendances
+            <i class="fa-solid fa-arrow-trend-up text-xl mr-1.5"></i> Tendances
           </RouterLink>
 
           <RouterLink
             :to="{ name: 'tv_top_rated', params: { page: 1 } }"
-            class="flex items-center font-medium text-sm transition-colors"
+            class="flex items-center font-medium text-xl transition-colors"
             :class="active === 'tv_top_rated' ? 'text-white' : 'text-white/60 hover:text-white/80'"
           >
-            <i class="fa-regular fa-star text-xs mr-1.5"></i> Mieux notées
+            <i class="fa-regular fa-star text-xl mr-1.5"></i> Mieux notées
           </RouterLink>
         </div>
       </nav>

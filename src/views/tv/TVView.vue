@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -15,6 +15,25 @@ const watchProviders = ref({})
 const seasons = ref([])
 const loading = ref(true)
 
+// Titre dynamique avec computed qui se met à jour automatiquement
+const pageTitle = computed(() => {
+  if (tvShow.value?.name) {
+    const year = tvShow.value.first_air_date?.substring(0, 4) || ''
+    return `${tvShow.value.name} (${year}) - Noob Watch`
+  }
+  return 'Détails de la série - Noob Watch'
+})
+
+// Observer qui met à jour le titre dès que pageTitle change
+watch(
+  pageTitle,
+  (newTitle) => {
+    document.title = newTitle
+  },
+  { immediate: true }
+)
+// Recharger les données si l'ID change
+watch(() => route.params.id, fetchTVShow, { immediate: true })
 async function fetchTVShow() {
   try {
     loading.value = true
@@ -153,6 +172,7 @@ const frameWidth = computed(() => {
             :src="imgURL + tvShow.poster_path"
             :alt="'poster de la série : ' + tvShow.name"
             class="hidden md:block w-32 md:w-40 rounded-md shadow-lg mr-6"
+            loading="lazy"
           />
 
           <!-- Show info -->
@@ -300,6 +320,7 @@ const frameWidth = computed(() => {
                   :src="imgURL + provider.logo_path"
                   :alt="provider.provider_name"
                   class="w-16 h-16 object-cover"
+                  loading="lazy"
                 />
               </div>
 
